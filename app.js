@@ -520,7 +520,7 @@ app.get("/", (req, res) => {
 
 
 module.exports = app;
-//module.exports = {io};
+module.exports = {io};
 app.listen(5203, '0.0.0.0', () => {
   console.log("✅ Server running on port 5203");
 });
