@@ -513,6 +513,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 router.use("/user", userRoute);
 router.use("/pipeline", pipeline);
 router.use("/file", file);
+app.use("/", router);
 
 app.get("/", (req, res) => {
   res.send("Backend is running ✅");
