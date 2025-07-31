@@ -514,7 +514,10 @@ router.use("/user", userRoute);
 router.use("/pipeline", pipeline);
 router.use("/file", file);
 
-app.use("/api", router);
+app.get("/", (req, res) => {
+  res.send("Backend is running ✅");
+});
+
 
 module.exports = app;
 //module.exports = {io};
