@@ -2,10 +2,32 @@ version: '3.8'
 
 services:
   backend:
+    container_name: backend-app
     build:
       context: .
       dockerfile: Dockerfile
-    image: cloudansh/hrms-backend:latest
     ports:
       - "5203:5203"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - mysql
     restart: always
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: your_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  mysql_data:
